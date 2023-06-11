@@ -5,8 +5,10 @@ class M_peminjaman extends CI_Model
     function nootomatis()
     {
         $today = date('Ymd');
+        // $query = mysql_query("select max(id_peminjaman) as last from peminjaman where id_peminjaman like '$today%'");
+        // $data = mysql_fetch_array($query);
         $con = mysqli_connect("localhost", "root", "", "ci_new");
-        $query = mysqli_query($con,"select max(id_peminjaman) as last from peminjaman where id_peminjaman like '$today%'");
+        $query = mysqli_query($con, "select max(id_peminjaman) as last from peminjaman");
         $data = mysqli_fetch_array($query);
         $lastNoFaktur = $data['last'];
         $lastNoUrut = substr($lastNoFaktur, 8, 3);
